@@ -5,7 +5,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from src.models.user import db
 from src.models.thread import Thread, Message, Draft, Connection
 from src.routes.user import user_bp
 from src.routes.auth import auth_bp
@@ -14,6 +13,8 @@ from src.routes.connections import connections_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
+
+from src.models.user import db
 
 # Configurar CORS para permitir requisições do frontend
 CORS(app, origins=[
